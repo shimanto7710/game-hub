@@ -1,12 +1,26 @@
-import { Button } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import "./App.css";
+import { NavBar } from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
-    <>
-      <Button>Button</Button>
-      <p>asdasdada</p>
-    </>
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+    >
+      <GridItem area="nav">
+        <NavBar />
+      </GridItem>
+
+      <GridItem area="aside">Aside</GridItem>
+
+      <GridItem area="main">
+        <GameGrid />
+      </GridItem>
+    </Grid>
   );
 }
 
