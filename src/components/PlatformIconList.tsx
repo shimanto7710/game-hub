@@ -53,43 +53,12 @@ const PlatformIconList = ({ platforms = [] }: Props) => {
     // </HStack>
     <HStack marginY={1}>
       {platforms.map((platformx) => (
-        <PlatformIcon platform={platformx.slug} />
+        <PlatformIcon platform={platformx.slug} key={platformx.id} />
         // <Text>{[platform.name]}</Text>
         // <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
       ))}
     </HStack>
   );
-
-  // return (
-
-  //   <HStack marginY={1}>
-  //     {/* console.log(`No icon found for platform:`); */}
-  //     {platforms.map((platform) => {
-  //       // const IconComponent = iconMap[platform.slug]; // Retrieve icon from map
-
-  //       // // Gracefully handle unsupported platforms
-  //       // if (!IconComponent) {
-  //       //   console.log(`No icon found for platform: ${platform.slug}`);
-  //       //   return null;
-  //       // }
-
-  //       return (
-  //         // <Text>{[platform.name]}</Text>
-  //         // <Icon
-  //         //   key={platform.id} // Ensure unique key for each item
-  //         //   as={IconComponent} // Assign dynamic icon
-  //         //   color="gray.500"
-  //         //   boxSize={5} // Adjust size for icons
-  //         // />
-  //         <Icon
-  //           key={platform.id}
-  //           as={iconMap[platform.slug]}
-  //           color="gray.500"
-  //         />
-  //       );
-  //     })}
-  //   </HStack>
-  // );
 };
 
 export default PlatformIconList;
