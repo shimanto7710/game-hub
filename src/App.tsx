@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Show, Stack } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
@@ -54,7 +54,7 @@ function App() {
           <GameHeading gameQuery={gameQuery} />
 
           <Flex marginBottom={5} direction={{ base: "column", lg: "row" }}>
-            <Box marginBottom={{ base: 4, lg: 0 }} marginRight={{ lg: 5 }}>
+            <Box marginBottom={{ base: 4, lg: 0 }} marginRight={{ lg: 4 }}>
               <PlatformSelector
                 onSelectedPlatform={(platform) => {
                   setGameQuery({ ...gameQuery, platform });
