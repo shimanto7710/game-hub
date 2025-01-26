@@ -6,7 +6,16 @@ export const ColorModeSwitch = () => {
   return (
     <HStack>
       <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode} />
-      <Text whiteSpace="nowrap">Dark Mode</Text>
+      <Text
+        display={{ base: "none", sm: "inline" }} // Hide on small screen (base), show on sm and larger
+      >
+        Dark Mode
+      </Text>
+      <Text
+        display={{ base: "inline", sm: "none" }} // Show on small screens (base), hide on sm and larger
+      >
+        Dark
+      </Text>
     </HStack>
   );
 };

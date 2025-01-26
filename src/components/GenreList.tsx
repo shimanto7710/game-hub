@@ -22,29 +22,27 @@ export const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
     <>
       {isLoading && <Spinner></Spinner>}
       {error && <Text>{error}</Text>}
-      <Heading fontSize="2xl" marginLeft={5} marginBottom={3}>
+      <Heading fontSize="2xl" marginTop={9} marginBottom={3}>
         Genres
       </Heading>
       <List paddingX="20px">
         {data.map((genre) => (
-          <ListItem listStyleType="none" key={genre.id} paddingY="5px">
+          <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image
-                objectFit="cover"
-                borderRadius="3px"
                 boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
                 src={getCroppedImageUrl(genre.image_background)}
               ></Image>
 
               <Button
                 whiteSpace="normal"
-                textAlign="center"
-                fontSize="lg"
-                variant="ghost"
+                textAlign="left"
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-                onClick={() => {
-                  onSelectedGenre(genre);
-                }}
+                onClick={() => onSelectedGenre(genre)}
+                fontSize="md"
+                variant="link"
               >
                 {genre.name}
               </Button>

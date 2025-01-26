@@ -20,7 +20,7 @@ export const SearchInput = ({ onSearch }: Props) => {
         <InputLeftElement children={<BsSearch></BsSearch>}></InputLeftElement>
         <Input
           ref={ref}
-          border={20}
+          borderRadius={20}
           placeholder="Search games..."
           variant="filled"
         ></Input>
