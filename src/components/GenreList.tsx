@@ -16,32 +16,11 @@ export const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
       {isLoading && <Spinner />}
       {error && <Text>{error}</Text>}
 
-      <Typography
-        marginLeft={6}
-        marginTop={5}
-        variant="h5"
-        fontSize="2xl"
-        sx={{ fontWeight: "bold", color: "white" }} // Or use fontWeight: 700 for more control
-      >
-        Home
-      </Typography>
-
-      <Typography
-        marginLeft={6}
-        marginTop={5}
-        marginBottom={2}
-        variant="h5"
-        fontSize="2xl"
-        sx={{ fontWeight: "bold", color: "white" }} // Or use fontWeight: 700 for more control
-      >
-        Genres
-      </Typography>
-      <List margin="0px">
+      <List>
         {data.map((genre) => (
           <ListItem
             key={genre.id}
             paddingY="10px"
-            paddingX="10px"
             borderRadius="8px"
             transition="box-shadow 0.2s ease, transform 0.2s ease"
             _hover={{
@@ -49,7 +28,9 @@ export const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
               transform: "scale(1.01)", // Slight zoom effect
               backgroundColor: "gray.50", // Subtle background highlight
             }}
-            onClick={() => onSelectedGenre(genre)}
+            onClick={() => {
+              onSelectedGenre(genre);
+            }}
           >
             <HStack>
               <Image

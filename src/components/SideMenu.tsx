@@ -1,28 +1,12 @@
 import Box from "@mui/material/Box";
 import { GenreList } from "./GenreList";
-import { GameQuery } from "../App";
-import { Genre } from "../hooks/useGenres";
+import { GameQueryProps } from "../model/GameInterface";
+// import { GameQuery } from "../pages/MainPage";
 
-// const drawerWidth = 240;
-
-// const Drawer = styled(MuiDrawer)({
-//   width: drawerWidth,
-//   flexShrink: 0,
-//   boxSizing: "border-box",
-//   mt: 10,
-//   [`& .${drawerClasses.paper}`]: {
-//     width: drawerWidth,
-//     boxSizing: "border-box",
-//     borderRight: "none", // Remove the right border
-//   },
-// });
-
-export interface Props {
-  gameQuery: GameQuery;
-  onSelectedGenre: (genre: Genre) => void;
-}
-
-export default function SideMenu({ gameQuery, onSelectedGenre }: Props) {
+export default function SideMenu({
+  gameQuery,
+  onSelectedGenre,
+}: GameQueryProps) {
   return (
     <Box
       color="#151515"

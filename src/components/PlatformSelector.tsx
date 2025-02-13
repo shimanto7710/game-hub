@@ -1,7 +1,16 @@
-import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+// import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatform";
 import { Platform } from "../hooks/useGames";
+import {
+  FormControl,
+  FormHelperText,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { useState } from "react";
+// import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 interface Props {
   onSelectedPlatform: (platform: Platform) => void;
@@ -14,27 +23,65 @@ export const PlatformSelector = ({
 }: Props) => {
   const { data, error } = usePlatforms();
 
-  if (error) return null;
+  const [selectedValue, setSelectedValue] = useState<string>("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    const platform = data.find((p) => p.name === event.target.value);
+    if (platform) {
+      onSelectedPlatform(platform);
+      setSelectedValue(event.target.value);
+    }
+  };
 
   return (
     <>
-      <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {selectedPlatform?.name || "Platform"}
-        </MenuButton>
-        <MenuList>
+      <FormControl sx={{ m: 1, minWidth: 200 }}>
+        <Select
+          value={selectedPlatform?.name || selectedValue}
+          onChange={handleChange}
+          displayEmpty
+          inputProps={{ "aria-label": "Without label" }}
+          sx={{
+            backgroundColor: "#202020",
+            color: "white",
+            height: "40px", // Reduced height
+            fontSize: "14px", // Adjusted font size
+            padding: "5px",
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#202020",
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#202020",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#202020",
+            },
+            "& .MuiSelect-icon": {
+              color: "white",
+            },
+          }}
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                backgroundColor: "white", // Background when dropdown is open
+                color: "black", // Font color when dropdown is open
+                fontSize: "12px", // Smaller font size
+              },
+            },
+          }}
+        >
+          <MenuItem value="">Platform</MenuItem>
           {data.map((platform) => (
             <MenuItem
-              onClick={() => {
-                onSelectedPlatform(platform);
-              }}
               key={platform.id}
+              value={platform.name}
+              sx={{ fontSize: "12px" }}
             >
               {platform.name}
             </MenuItem>
           ))}
-        </MenuList>
-      </Menu>
+        </Select>
+      </FormControl>
     </>
   );
 };

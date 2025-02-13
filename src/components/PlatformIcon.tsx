@@ -21,70 +21,90 @@ const PlatformIcon = ({ platform }: PlatformIconProps) => {
   switch (platform) {
     case "pc":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <FaWindows />
         </Icon>
       );
       break;
     case "playstation":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <FaPlaystation />
         </Icon>
       );
       break;
     case "xbox":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <FaXbox />
         </Icon>
       );
       break;
     case "nintendo":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <SiNintendo />
         </Icon>
       );
       break;
     case "mac":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <FaApple />
         </Icon>
       );
       break;
     case "linux":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <FaLinux />
         </Icon>
       );
       break;
     case "android":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <FaAndroid />
         </Icon>
       );
       break;
     case "ios":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <MdPhoneIphone />
         </Icon>
       );
       break;
     case "web":
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <BsGlobe />
         </Icon>
       );
       break;
     default:
       icon = (
-        <Icon>
+        <Icon boxSize="24px">
+          {" "}
+          {/* Increase size */}
           <BsGlobe />
         </Icon>
       ); // Default icon if no match
