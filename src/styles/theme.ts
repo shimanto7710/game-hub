@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material/styles";
 
 // Define your colors here
 export const colors = {
-  background: "#181414", // Black background
+  background: "#151515", // Black background
   text: "#ffffff", // White text color
   primary: "#1976d2", // Example primary color
   secondary: "#dc004e", // Example secondary color

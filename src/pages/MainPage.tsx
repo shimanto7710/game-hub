@@ -5,9 +5,21 @@ import { HomeDrawer } from "../components/Drawer";
 import { colors } from "../styles/theme";
 import { useState } from "react";
 import { GameQuery } from "../model/GameInterface";
+// import { getLast30DateRange } from "../app/utils";
 
 export const MainPage = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
+  // Parent component (e.g., Layout.tsx or App.tsx)
+  // const [gameQuery, setGameQuery] = useState<GameQuery>({
+  //   genre: null,
+  //   platform: null,
+  //   sortOrder: "",
+  //   searchText: "",
+  //   page: 1, // Initialize with 1
+  //   pageSize: 12, // Add default pageSize
+  //   dates: "",
+  // });
 
   return (
     <Box paddingRight={7} paddingLeft={0} bgcolor={colors.background}>
@@ -40,7 +52,16 @@ export const MainPage = () => {
               gameQuery={gameQuery}
               onSelectedGenre={(genre) => {
                 // alert(genre);
-                setGameQuery({ ...gameQuery, genre: genre });
+                setGameQuery({ ...gameQuery, genre: genre, page: 1 });
+              }}
+              onChangeGameQuery={(dates, sortedBy) => {
+                // alert(dates);
+                setGameQuery({
+                  ...gameQuery,
+                  dates: dates,
+                  page: 1,
+                  sortOrder: sortedBy || "",
+                });
               }}
             ></HomeDrawer>
           </Box>

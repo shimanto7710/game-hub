@@ -23,7 +23,7 @@ export const GridCard = ({ game }: Props) => {
     <Box
       sx={{
         position: "relative",
-        width: 270,
+        width: { xs: "100%", sm: "100%", md: "100%", lg: "100%", xl: "100%" },
         minHeight: "auto",
         transition: "all 0.3s ease-in-out",
         "&:hover": {
@@ -80,7 +80,11 @@ export const GridCard = ({ game }: Props) => {
             }}
           >
             <PlatformIconList
-              platforms={game.parent_platforms.map((p) => p.platform)}
+              platforms={
+                game.parent_platforms && game.parent_platforms.length > 0
+                  ? game.parent_platforms.map((p) => p.platform)
+                  : []
+              }
             />
             {/* <CriticScore score={game.metacritic} /> */}
           </Box>

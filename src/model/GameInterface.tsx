@@ -8,6 +8,7 @@ export interface GameQuery {
   searchText: string;
   page: number; // Add page
   pageSize: number; // Add pageSize
+  dates: string;
 }
 
 export interface GameQueryProps {
@@ -17,6 +18,7 @@ export interface GameQueryProps {
 
 export interface GridCardProps {
   gameQuery: GameQuery;
+  onLoadMore: () => void;
 }
 
 export interface GameQueryFilterProps {

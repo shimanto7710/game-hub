@@ -12,14 +12,17 @@ const useData=<T>(endPoint:string, requestConfig?:AxiosRequestConfig, deps?:any[
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState();
     const [isLoading,setloading]=useState(false)
-
+    const [count, setCount] = useState(0); // new state for total count of data
+    
     useEffect(() => {
         const controller=new AbortController();
         setloading(true);
+        setData([]);
         apiClient
           .get<FetchResponse<T>>(endPoint, {signal: controller.signal, ...requestConfig})
           .then((res) => {
             setData(res.data.results);
+            setCount(res.data.count); // set the total count of data
             setloading(false);
           })
           .catch((err) => {
@@ -31,6 +34,6 @@ const useData=<T>(endPoint:string, requestConfig?:AxiosRequestConfig, deps?:any[
           return () =>controller.abort();
       },deps ? [...deps] : []);
 
-      return {data, error, isLoading}
+      return {data, count, error, isLoading}
 }
 export default useData;

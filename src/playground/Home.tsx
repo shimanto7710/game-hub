@@ -16,6 +16,7 @@ const Home: React.FC = () => {
     gameQuery: GameQuery;
     setGameQuery: (query: GameQuery) => void;
   }>();
+
   return (
     <>
       <Box sx={{ width: "100%", height: "100%", bgcolor: colors.background }}>
@@ -35,22 +36,18 @@ const Home: React.FC = () => {
             color: "white",
             fontSize: "15px",
             marginTop: "0px",
+            marginBottom: "20px",
+            marginLeft: "5px",
           }} // Or use fontWeight: 700 for more control
         >
           Based on player counts and release date
         </Typography>
 
         <Box sx={{ display: "flex" }}>
-          {/* <SortSelector
-            onSelectedSortOrder={function (order: string): void {
-              throw new Error("Function not implemented.");
-            }}
-            sortdOrder={""}
-          ></SortSelector> */}
-
           <PlatformSelector
             onSelectedPlatform={function (platform: Platform): void {
-              setGameQuery({ ...gameQuery, platform: platform });
+              // alert(platform);
+              setGameQuery({ ...gameQuery, platform: platform, page: 1 });
             }}
             selectedPlatform={null}
           ></PlatformSelector>
@@ -58,11 +55,20 @@ const Home: React.FC = () => {
           <SortSelector
             sortOrder={gameQuery.sortOrder}
             onSelectSortOrder={(sortOrder) =>
-              setGameQuery({ ...gameQuery, sortOrder })
+              setGameQuery({ ...gameQuery, sortOrder: sortOrder, page: 1 })
             }
           />
         </Box>
-        <HomeGrid gameQuery={gameQuery} />
+        <HomeGrid
+          gameQuery={gameQuery}
+          onLoadMore={() => {
+            // alert("Load more");
+            setGameQuery({
+              ...gameQuery,
+              page: (gameQuery.page || 1) + 1,
+            });
+          }}
+        />
         {/* <PPP></PPP> */}
       </Box>
     </>

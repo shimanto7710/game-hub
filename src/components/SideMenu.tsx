@@ -19,7 +19,7 @@ export default function SideMenu({
           display: "none", // Hide scrollbar for Chrome/Safari
         },
         scrollbarWidth: "none", // Hide scrollbar for Firefox
-        "-ms-overflow-style": "none", // Hide scrollbar for IE/Edge
+        // "-ms-overflow-style": "none", // Hide scrollbar for IE/Edge
       }}
     >
       <GenreList

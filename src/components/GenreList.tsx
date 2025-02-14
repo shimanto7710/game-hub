@@ -20,7 +20,7 @@ export const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
         {data.map((genre) => (
           <ListItem
             key={genre.id}
-            paddingY="10px"
+            paddingY="6px"
             borderRadius="8px"
             transition="box-shadow 0.2s ease, transform 0.2s ease"
             _hover={{
