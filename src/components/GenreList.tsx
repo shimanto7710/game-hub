@@ -8,7 +8,7 @@ interface Props {
   selectedGenre: Genre | null;
 }
 
-export const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
+export const GenreList = ({ onSelectedGenre }: Props) => {
   const { data, error, isLoading } = useGenres();
 
   return (

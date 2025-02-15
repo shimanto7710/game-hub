@@ -1,10 +1,9 @@
 // import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
-import { BsChevronDown } from "react-icons/bs";
+// import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatform";
 import { Platform } from "../hooks/useGames";
 import {
   FormControl,
-  FormHelperText,
   MenuItem,
   Select,
   SelectChangeEvent,
@@ -21,7 +20,7 @@ export const PlatformSelector = ({
   onSelectedPlatform,
   selectedPlatform,
 }: Props) => {
-  const { data, error } = usePlatforms();
+  const { data } = usePlatforms();
 
   const [selectedValue, setSelectedValue] = useState<string>("");
 
