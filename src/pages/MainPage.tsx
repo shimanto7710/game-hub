@@ -50,6 +50,17 @@ export const MainPage = () => {
             {/* Side Menu */}
             <Box sx={{ width: "100%", borderRadius: 1, flex: 2 }}>
               <HomeDrawer
+                onClickHome={() => {
+                  setGameQuery({
+                    ...gameQuery,
+                    genre: null,
+                    page: 1,
+                    dates: "",
+                    sortOrder: "-relevance",
+                    searchText: "",
+                    platform: null,
+                  });
+                }}
                 gameQuery={gameQuery}
                 onSelectedGenre={(genre) => {
                   setGameQuery({ ...gameQuery, genre: genre, page: 1 });

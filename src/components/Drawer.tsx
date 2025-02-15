@@ -1,6 +1,5 @@
 import { Box, List, ListItem, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-// import { useState } from "react";
 import SideMenu from "./SideMenu";
 import { useNavigate } from "react-router-dom";
 import { colors } from "../styles/theme"; // Import colors from theme
@@ -19,16 +18,19 @@ import {
 import { Genre } from "../hooks/useGenres";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
+// Update the interface to allow resetting the genre by accepting null.
 export interface HomeDrawerProps {
   gameQuery: GameQuery;
-  onSelectedGenre: (genre: Genre) => void;
+  onSelectedGenre: (genre: Genre | null) => void;
   onChangeGameQuery: (dates: string, sortedBy?: string) => void;
+  onClickHome: () => void;
 }
 
 export const HomeDrawer = ({
   gameQuery,
   onSelectedGenre,
   onChangeGameQuery,
+  onClickHome,
 }: HomeDrawerProps) => {
   const menuItems = [
     { text: "Home", path: "/" },
@@ -37,7 +39,6 @@ export const HomeDrawer = ({
     // { text: "About", path: "/about" },
   ];
 
-  // const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const navigate = useNavigate();
 
   return (
@@ -46,7 +47,15 @@ export const HomeDrawer = ({
         {menuItems.map((item) => (
           <ListItem
             key={item.text}
-            onClick={() => navigate(item.path)}
+            onClick={() => {
+              if (item.text === "Home") {
+                // Reset filters for a fresh start.
+                onSelectedGenre(null);
+                onChangeGameQuery("", "");
+                onClickHome && onClickHome();
+              }
+              navigate(item.path);
+            }}
             sx={{
               padding: "10px 0",
               cursor: "pointer", // Makes it clear it's clickable
@@ -73,20 +82,19 @@ export const HomeDrawer = ({
         marginTop={0}
         marginBottom={2}
         variant="h6"
-        fontSize="2xl"
         sx={{
           fontWeight: "bold",
           color: "white",
           fontSize: "22px",
           marginLeft: "40px",
-        }} // Or use fontWeight: 700 for more control
+        }}
       >
         New Releases
       </Typography>
 
       <HoverBadge
         onClick={() => {
-          onChangeGameQuery(getLast30DateRange()), "";
+          onChangeGameQuery(getLast30DateRange(), "");
         }}
         text="Last 30 days"
         icon={<StarIcon />}
@@ -100,7 +108,7 @@ export const HomeDrawer = ({
       />
       <HoverBadge
         onClick={() => {
-          onChangeGameQuery(getNext7Days()), "";
+          onChangeGameQuery(getNext7Days(), "");
         }}
         text="Next Week"
         icon={<SkipNextIcon />}
@@ -110,21 +118,19 @@ export const HomeDrawer = ({
         marginTop={0}
         marginBottom={2}
         variant="h6"
-        fontSize="2xl"
         sx={{
           fontWeight: "bold",
           color: "white",
           fontSize: "22px",
           marginLeft: "40px",
           marginTop: "20px",
-        }} // Or use fontWeight: 700 for more control
+        }}
       >
         Top
       </Typography>
 
       <HoverBadge
         onClick={() => {
-          // alert("Top 10");
           onChangeGameQuery(getYearStartToToday(), "-metacritic");
         }}
         text="Best of the year"
@@ -133,7 +139,6 @@ export const HomeDrawer = ({
 
       <HoverBadge
         onClick={() => {
-          // alert("Top 10");
           onChangeGameQuery(get2024StartToToday(), "-added");
         }}
         text="Popular in 2024"
@@ -142,18 +147,13 @@ export const HomeDrawer = ({
 
       <HoverBadge
         onClick={() => {
-          // alert("Top 10");
           onChangeGameQuery("", "-metacritic");
         }}
         text="All time top 250"
         icon={<BarChartIcon />}
       />
 
-      <SideMenu
-        gameQuery={gameQuery}
-        onSelectedGenre={onSelectedGenre}
-        // onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-      />
+      <SideMenu gameQuery={gameQuery} onSelectedGenre={onSelectedGenre} />
     </Box>
   );
 };
