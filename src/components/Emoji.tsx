@@ -28,5 +28,5 @@ export const Emoji = ({ rating }: Props) => {
     },
   };
 
-  return <Image {...emojiMap[rating]} marginTop="1px" />;
+  return <Image {...emojiMap[rating]} marginTop="1px" marginLeft="10px" />;
 };

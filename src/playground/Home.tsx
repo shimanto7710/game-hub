@@ -58,7 +58,7 @@ const Home: React.FC = () => {
             color: "white",
             fontSize: "15px",
             marginTop: "0px",
-            marginBottom: "20px",
+            marginBottom: "15px",
             marginLeft: "5px",
           }} // Or use fontWeight: 700 for more control
         >

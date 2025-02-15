@@ -21,7 +21,7 @@ export const MainPage = () => {
       <Box
         paddingRight={7}
         paddingLeft={0}
-        width={{ lg: "100%", xs: "100%", sm: "100%", md: "100%", xl: "60%" }}
+        width={{ lg: "100%", xs: "100%", sm: "100%", md: "100%", xl: "70%" }}
         bgcolor={colors.background}
       >
         <Stack

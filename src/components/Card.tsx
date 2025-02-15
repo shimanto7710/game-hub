@@ -16,6 +16,7 @@ import { CriticScore } from "./CriticScore";
 import { formatDate, formatRankAndDate } from "../app/utils";
 // import { GamePromoCard } from "./ListCard";
 import { ListCard } from "./ListCard";
+import { Emoji } from "./Emoji";
 
 interface Props {
   game: Game;
@@ -109,9 +110,19 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
               textOverflow: "ellipsis",
+              marginRight: "5px",
             }}
           >
-            {game.name}
+            {game.name}{" "}
+            <Box
+              component="span"
+              sx={{
+                verticalAlign: "middle",
+                display: "inline-block",
+              }}
+            >
+              <Emoji rating={game.rating_top} />
+            </Box>
           </Typography>
 
           {/* Expandable Content with Rounded Bottom Corners */}

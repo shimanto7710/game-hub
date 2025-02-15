@@ -22,11 +22,25 @@ export default function HomeGrid({
 
   const [allGames, setAllGames] = useState<Game[]>([]);
 
+  // useEffect(() => {
+  //   if (gameQuery.page === 1) {
+  //     setAllGames(data);
+  //   } else {
+  //     setAllGames((prev) => [...prev, ...data]);
+  //   }
+  // }, [data, gameQuery.page]);
+
   useEffect(() => {
+    // alert("useEffect");
     if (gameQuery.page === 1) {
       setAllGames(data);
     } else {
-      setAllGames((prev) => [...prev, ...data]);
+      // Filter out duplicates before adding new games
+      setAllGames((prev) => {
+        const existingIds = new Set(prev.map((game) => game.id));
+        const newGames = data.filter((game) => !existingIds.has(game.id));
+        return [...prev, ...newGames];
+      });
     }
   }, [data, gameQuery.page]);
 
@@ -53,7 +67,7 @@ export default function HomeGrid({
             xs={displayOption === "list" ? 12 : 12}
             sm={displayOption === "list" ? 12 : 6}
             md={displayOption === "list" ? 12 : 4}
-            lg={displayOption === "list" ? 12 : 3}
+            lg={displayOption === "list" ? 12 : 4}
             xl={displayOption === "list" ? 12 : 2.3}
             sx={
               displayOption === "list"
