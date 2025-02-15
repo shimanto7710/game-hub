@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardContent,
   CardMedia,
@@ -7,17 +8,25 @@ import {
   Typography,
 } from "@mui/material";
 import { Game } from "../hooks/useGames";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
 import { colors } from "../styles/theme";
 import PlatformIconList from "./PlatformIconList";
 import { CriticScore } from "./CriticScore";
 import { formatDate, formatRankAndDate } from "../app/utils";
+// import { GamePromoCard } from "./ListCard";
+import { ListCard } from "./ListCard";
 
 interface Props {
   game: Game;
+  variant?: "grid" | "list";
 }
-export const GridCard = ({ game }: Props) => {
+export const GridCard = ({ game, variant = "grid" }: Props) => {
   const [hovered, setHovered] = useState<number | null>(null);
+
+  if (variant === "list") {
+    return <ListCard game={game} />;
+  }
 
   return (
     <Box
@@ -224,10 +233,27 @@ export const GridCard = ({ game }: Props) => {
                 Critic Score:
               </Typography>
               <CriticScore score={game.metacritic} />
-              {/* <Typography variant="body2" color={colors.text} fontSize="12px">
-                {formatRankAndDate(game.released, game.rating_top)}
-              </Typography> */}
             </Box>
+            <Button
+              variant="contained"
+              sx={{
+                marginBottom: 2,
+                backgroundColor: colors.buttonBg,
+                color: "#fff",
+                justifyContent: "space-between",
+                paddingX: 2,
+                paddingY: 1,
+                borderRadius: "8px",
+                textTransform: "none",
+                "&:hover": { backgroundColor: "#252525" },
+                width: "100%", // Adjust width if needed
+                display: "flex",
+                boxShadow: "none",
+              }}
+              endIcon={<ArrowForwardIosIcon sx={{ color: "gray" }} />}
+            >
+              Show more like this
+            </Button>
           </Box>
         </CardContent>
       </Card>

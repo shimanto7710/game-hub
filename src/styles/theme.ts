@@ -9,6 +9,9 @@ export const colors = {
   secondary: "#dc004e", // Example secondary color
   cardBg:"#202020",
   secondaryText:"#6f6f6f",
+  altBg:"#202020",
+  buttonBg:"#303030",
+  gray:"#898989",
 };
 
 const theme = createTheme({

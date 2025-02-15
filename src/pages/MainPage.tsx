@@ -10,75 +10,75 @@ import { GameQuery } from "../model/GameInterface";
 export const MainPage = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
-  // Parent component (e.g., Layout.tsx or App.tsx)
-  // const [gameQuery, setGameQuery] = useState<GameQuery>({
-  //   genre: null,
-  //   platform: null,
-  //   sortOrder: "",
-  //   searchText: "",
-  //   page: 1, // Initialize with 1
-  //   pageSize: 12, // Add default pageSize
-  //   dates: "",
-  // });
-
   return (
-    <Box paddingRight={7} paddingLeft={0} bgcolor={colors.background}>
-      <Stack
-        direction="column"
-        sx={{
-          height: "100%",
-          bgcolor: colors.background,
-        }}
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+      bgcolor={colors.background}
+    >
+      <Box
+        paddingRight={7}
+        paddingLeft={0}
+        width={{ lg: "100%", xs: "100%", sm: "100%", md: "100%", xl: "60%" }}
+        bgcolor={colors.background}
       >
-        <Box
+        <Stack
+          direction="column"
           sx={{
-            width: "100%",
-            height: "100px",
-            borderRadius: 1,
+            height: "100%",
+            bgcolor: colors.background,
           }}
         >
-          <AppNavbar
-            onSearch={(searchText) => {
-              setGameQuery({ ...gameQuery, searchText: searchText });
-            }}
-          />
-        </Box>
-
-        {/* Main Content */}
-        <Stack spacing={1} direction="row" sx={{ flex: 1 }}>
-          {/* Side Menu */}
-          <Box sx={{ width: "100%", borderRadius: 1, flex: 2 }}>
-            <HomeDrawer
-              gameQuery={gameQuery}
-              onSelectedGenre={(genre) => {
-                // alert(genre);
-                setGameQuery({ ...gameQuery, genre: genre, page: 1 });
-              }}
-              onChangeGameQuery={(dates, sortedBy) => {
-                // alert(dates);
-                setGameQuery({
-                  ...gameQuery,
-                  dates: dates,
-                  page: 1,
-                  sortOrder: sortedBy || "",
-                });
-              }}
-            ></HomeDrawer>
-          </Box>
-
-          {/* Content Area */}
           <Box
             sx={{
-              bgcolor: "#e95f65",
               width: "100%",
+              height: "100px",
               borderRadius: 1,
-              flex: 9,
             }}
           >
-            <Outlet context={{ gameQuery, setGameQuery }} />
+            <AppNavbar
+              onSearch={(searchText) => {
+                setGameQuery({ ...gameQuery, searchText: searchText });
+              }}
+            />
           </Box>
+
+          {/* Main Content */}
+          <Stack spacing={1} direction="row" sx={{ flex: 1 }}>
+            {/* Side Menu */}
+            <Box sx={{ width: "100%", borderRadius: 1, flex: 2 }}>
+              <HomeDrawer
+                gameQuery={gameQuery}
+                onSelectedGenre={(genre) => {
+                  setGameQuery({ ...gameQuery, genre: genre, page: 1 });
+                }}
+                onChangeGameQuery={(dates, sortedBy) => {
+                  setGameQuery({
+                    ...gameQuery,
+                    dates: dates,
+                    page: 1,
+                    sortOrder: sortedBy || "",
+                  });
+                }}
+              />
+            </Box>
+
+            {/* Content Area */}
+            <Box
+              sx={{
+                bgcolor: "#e95f65",
+                width: "100%",
+                borderRadius: 1,
+                flex: 9,
+              }}
+            >
+              <Outlet context={{ gameQuery, setGameQuery }} />
+            </Box>
+          </Stack>
         </Stack>
-      </Stack>
+      </Box>
     </Box>
   );
 };

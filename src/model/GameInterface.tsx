@@ -19,6 +19,7 @@ export interface GameQueryProps {
 export interface GridCardProps {
   gameQuery: GameQuery;
   onLoadMore: () => void;
+  displayOption: string;
 }
 
 export interface GameQueryFilterProps {

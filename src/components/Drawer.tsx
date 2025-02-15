@@ -48,14 +48,19 @@ export const HomeDrawer = ({
             key={item.text}
             onClick={() => navigate(item.path)}
             sx={{
-              padding: "10px 0", // Adjust the padding to make the text more spaced out
+              padding: "10px 0",
+              cursor: "pointer", // Makes it clear it's clickable
+              "&:hover": {
+                textDecoration: "underline", // Adds an underline on hover
+              },
             }}
           >
             <Typography
               sx={{
-                fontSize: "22px", // Increase font size here
-                color: colors.text, // Ensure text color is visible on dark background
-                fontWeight: "bold", // Optional: make the font bold
+                fontSize: "22px",
+                color: colors.text,
+                fontWeight: "bold",
+                transition: "text-decoration 0.3s ease-in-out", // Smooth transition
               }}
             >
               {item.text}

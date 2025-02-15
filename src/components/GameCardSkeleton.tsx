@@ -1,6 +1,19 @@
 import { Box, Card, CardContent, Skeleton } from "@mui/material";
 
-export const GridCardSkeleton = () => {
+export const GridCardSkeleton = ({ variant = "grid" }) => {
+  if (variant === "list") {
+    return (
+      <Box sx={{ width: "100%", maxWidth: 800, margin: "0 auto", p: 2 }}>
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          height={200}
+          sx={{ borderRadius: 2 }}
+        />
+      </Box>
+    );
+  }
+
   return (
     <Box
       sx={{

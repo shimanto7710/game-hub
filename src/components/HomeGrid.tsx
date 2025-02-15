@@ -10,7 +10,11 @@ import useInfiniteScroll from "./UseInfiniteScroll";
 import ScrollSpinner from "./ScrollSpinner";
 // import { GameCardSkeleton } from "./GameCardSkeleton";
 
-export default function HomeGrid({ gameQuery, onLoadMore }: GridCardProps) {
+export default function HomeGrid({
+  gameQuery,
+  onLoadMore,
+  displayOption,
+}: GridCardProps) {
   const { data, count, error, isLoading } = useGames(gameQuery);
   // const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -41,14 +45,36 @@ export default function HomeGrid({ gameQuery, onLoadMore }: GridCardProps) {
   return (
     <>
       {error && <Typography>{error}</Typography>}
-      <Grid container spacing={3} sx={{ marginTop: "10px" }}>
+      <Grid container spacing={3} sx={{ marginTop: "0px" }}>
         {allGames.map((game) => (
-          <Grid item key={game.id} xs={12} sm={6} md={4} lg={4} xl={2.3}>
-            <GridCard game={game} />
+          <Grid
+            item
+            key={game.id}
+            xs={displayOption === "list" ? 12 : 12}
+            sm={displayOption === "list" ? 12 : 6}
+            md={displayOption === "list" ? 12 : 4}
+            lg={displayOption === "list" ? 12 : 3}
+            xl={displayOption === "list" ? 12 : 2.3}
+            sx={
+              displayOption === "list"
+                ? {
+                    maxWidth: "800px",
+                    margin: "0 auto",
+                    "&:hover": {
+                      transform: "scale(1.02)",
+                    },
+                  }
+                : {}
+            }
+          >
+            <GridCard
+              game={game}
+              variant={displayOption === "list" ? "list" : "grid"}
+            />
           </Grid>
         ))}
 
-        {/* Initial Loading Skeletons */}
+        {/* Loading Skeletons */}
         {isLoading &&
           gameQuery.page === 1 &&
           Array(gameQuery.pageSize)
@@ -58,27 +84,27 @@ export default function HomeGrid({ gameQuery, onLoadMore }: GridCardProps) {
                 item
                 key={`skeleton-${index}`}
                 xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                xl={2.3}
+                sx={
+                  displayOption === "list"
+                    ? {
+                        maxWidth: "800px",
+                        margin: "0 auto",
+                      }
+                    : {}
+                }
               >
-                <GridCardSkeleton />
+                <GridCardSkeleton variant={displayOption} />
               </Grid>
             ))}
 
-        {true && ( // Force show spinner
+        {hasMore && (
           <Grid item xs={12}>
             <ScrollSpinner />
           </Grid>
         )}
       </Grid>
 
-      {!hasMore && allGames.length > 0 && (
-        <Typography sx={{ color: "white", textAlign: "center", py: 2 }}>
-          You've reached the end
-        </Typography>
-      )}
+      {/* ... existing end message ... */}
     </>
   );
 }
