@@ -2,7 +2,7 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import SideMenu from "./SideMenu";
 import { useNavigate } from "react-router-dom";
-import { colors } from "../styles/theme"; // Import colors from theme
+import { customColors } from "../styles/theme"; // Import colors from theme
 import { GameQuery } from "../model/GameInterface";
 import HoverBadge from "./HoverBadge";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
@@ -35,6 +35,7 @@ export const HomeDrawer = ({
   const menuItems = [
     { text: "Home", path: "/" },
     { text: "Reviews", path: "/review" },
+    // { text: "Game Details", path: "/gameDetails" },
     // { text: "New Releases", path: "/top-10" },
     // { text: "About", path: "/about" },
   ];
@@ -67,7 +68,7 @@ export const HomeDrawer = ({
             <Typography
               sx={{
                 fontSize: "22px",
-                color: colors.text,
+                color: customColors.text,
                 fontWeight: "bold",
                 transition: "text-decoration 0.3s ease-in-out", // Smooth transition
               }}

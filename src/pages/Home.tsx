@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
-import { colors } from "../styles/theme";
+import { customColors } from "../styles/theme";
 import HomeGrid from "../components/HomeGrid";
 import { useOutletContext } from "react-router-dom";
 import { GameQuery } from "../model/GameInterface";
@@ -41,7 +41,9 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Box sx={{ width: "100%", height: "100%", bgcolor: colors.background }}>
+      <Box
+        sx={{ width: "100%", height: "100%", bgcolor: customColors.background }}
+      >
         <Typography
           sx={{
             fontWeight: "bold",

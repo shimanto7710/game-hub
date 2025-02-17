@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export function formatDate(dateString: string): string {
     // Create a Date object from the input string
     const date = new Date(dateString);
@@ -104,3 +106,15 @@ export function formatDate(dateString: string): string {
     return `${formatDate(startDate)},${formatDate(endDate)}`;
   }
   
+  export const formatToFutureDate = (inputDate: string): string => {
+    // Parsing the input date
+    // const start = new Date(inputDate);
+  
+    // You can modify the return value based on a specific end date, for example, June 30, 2025
+    const end = new Date(inputDate);
+  
+    // Format the dates
+    const formattedEnd = format(end, 'MMM dd, yyyy');
+  
+    return formattedEnd; // Returns "Jun 30, 2025"
+  };

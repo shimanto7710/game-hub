@@ -2,7 +2,7 @@
 import { createTheme } from "@mui/material/styles";
 
 // Define your colors here
-export const colors = {
+export const customColors = {
   background: "#151515", // Black background
   text: "#ffffff", // White text color
   primary: "#1976d2", // Example primary color
@@ -17,16 +17,16 @@ export const colors = {
 const theme = createTheme({
   palette: {
     background: {
-      default: colors.background, // Set the background color for the entire app
+      default: customColors.background, // Set the background color for the entire app
     },
     text: {
-      primary: colors.text, // Set the default text color
+      primary: customColors.text, // Set the default text color
     },
     primary: {
-      main: colors.primary, // Primary color for the app
+      main: customColors.primary, // Primary color for the app
     },
     secondary: {
-      main: colors.secondary, // Secondary color for the app
+      main: customColors.secondary, // Secondary color for the app
     },
   },
 });

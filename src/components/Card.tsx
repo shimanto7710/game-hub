@@ -10,13 +10,15 @@ import {
 import { Game } from "../hooks/useGames";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
-import { colors } from "../styles/theme";
+import { customColors } from "../styles/theme";
 import PlatformIconList from "./PlatformIconList";
 import { CriticScore } from "./CriticScore";
 import { formatDate, formatRankAndDate } from "../app/utils";
 // import { GamePromoCard } from "./ListCard";
 import { ListCard } from "./ListCard";
 import { Emoji } from "./Emoji";
+import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -24,6 +26,7 @@ interface Props {
 }
 export const GridCard = ({ game, variant = "grid" }: Props) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   if (variant === "list") {
     return <ListCard game={game} />;
@@ -100,6 +103,7 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
           </Box>
 
           <Typography
+            onClick={() => navigate(`/game-details/${game.id}`)}
             variant="h6"
             sx={{
               fontWeight: "bold",
@@ -111,6 +115,11 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
               overflow: "hidden",
               textOverflow: "ellipsis",
               marginRight: "5px",
+              "&:hover": {
+                textDecoration: "underline",
+                transform: "scale(1.02)",
+                cursor: "pointer",
+              },
             }}
           >
             {game.name}{" "}
@@ -132,7 +141,7 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
               top: "calc(100% - 15px)",
               left: 0,
               right: 0,
-              bgcolor: colors.cardBg,
+              bgcolor: customColors.cardBg,
               zIndex: 1,
               transition: "all 0.3s ease",
               opacity: hovered === game.id ? 1 : 0,
@@ -150,7 +159,7 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
                 left: 0,
                 right: 0,
                 height: "1px",
-                backgroundColor: colors.cardBg,
+                backgroundColor: customColors.cardBg,
               },
             }}
           >
@@ -159,12 +168,16 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             >
               <Typography
                 variant="body2"
-                color={colors.secondaryText}
+                color={customColors.secondaryText}
                 fontSize="12px"
               >
                 Release Date:
               </Typography>
-              <Typography variant="body2" color={colors.text} fontSize="12px">
+              <Typography
+                variant="body2"
+                color={customColors.text}
+                fontSize="12px"
+              >
                 {formatDate(game.released)}
               </Typography>
             </Box>
@@ -182,12 +195,16 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             >
               <Typography
                 variant="body2"
-                color={colors.secondaryText}
+                color={customColors.secondaryText}
                 fontSize="12px"
               >
                 Playtime:
               </Typography>
-              <Typography variant="body2" color={colors.text} fontSize="12px">
+              <Typography
+                variant="body2"
+                color={customColors.text}
+                fontSize="12px"
+              >
                 {game.playtime}h
               </Typography>
             </Box>
@@ -195,7 +212,7 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             <Divider
               sx={{
                 borderBottomWidth: "0.5px",
-                borderColor: colors.secondaryText,
+                borderColor: customColors.secondaryText,
                 margin: "10px 3px",
               }}
             />
@@ -210,12 +227,16 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             >
               <Typography
                 variant="body2"
-                color={colors.secondaryText}
+                color={customColors.secondaryText}
                 fontSize="12px"
               >
                 Chart:
               </Typography>
-              <Typography variant="body2" color={colors.text} fontSize="12px">
+              <Typography
+                variant="body2"
+                color={customColors.text}
+                fontSize="12px"
+              >
                 {formatRankAndDate(game.released, game.rating_top)}
               </Typography>
             </Box>
@@ -223,7 +244,7 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             <Divider
               sx={{
                 borderBottomWidth: "0.5px",
-                borderColor: colors.secondaryText,
+                borderColor: customColors.secondaryText,
                 margin: "10px 3px",
               }}
             />
@@ -238,7 +259,7 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             >
               <Typography
                 variant="body2"
-                color={colors.secondaryText}
+                color={customColors.secondaryText}
                 fontSize="12px"
               >
                 Critic Score:
@@ -247,9 +268,10 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
             </Box>
             <Button
               variant="contained"
+              // onClick={() => navigate(`/game-details/${game.id}`)}
               sx={{
                 marginBottom: 2,
-                backgroundColor: colors.buttonBg,
+                backgroundColor: customColors.buttonBg,
                 color: "#fff",
                 justifyContent: "space-between",
                 paddingX: 2,

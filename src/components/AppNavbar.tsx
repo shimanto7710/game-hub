@@ -9,7 +9,8 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close"; // Add close icon
-import { colors } from "../styles/theme";
+import { customColors } from "../styles/theme";
+import { useNavigate } from "react-router-dom";
 
 export interface Props {
   onSearch: (searchedText: string) => void;
@@ -30,6 +31,8 @@ export const AppNavbar = ({ onSearch }: Props) => {
     onSearch("");
   };
 
+  const navigate = useNavigate();
+
   return (
     <Box width="100%">
       <Stack
@@ -43,7 +46,19 @@ export const AppNavbar = ({ onSearch }: Props) => {
           width: "100%",
         }}
       >
-        <Typography marginLeft={3} marginRight={2} color="white" variant="h6">
+        <Typography
+          onClick={() => navigate(`/`)}
+          marginLeft={3}
+          marginRight={2}
+          color="white"
+          variant="h6"
+          sx={{
+            "&:hover": {
+              transform: "scale(1.02)",
+              cursor: "pointer",
+            },
+          }}
+        >
           R A W G
         </Typography>
 
@@ -59,7 +74,7 @@ export const AppNavbar = ({ onSearch }: Props) => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "25px",
                 bgcolor: "#434343",
-                color: colors.gray, // Changed from white to #303030
+                color: customColors.gray, // Changed from white to #303030
                 height: "40px",
                 "&:hover": {
                   bgcolor: "white",

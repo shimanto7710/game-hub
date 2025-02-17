@@ -13,7 +13,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { formatDate, formatRankAndDate } from "../app/utils";
 import PlatformIconList from "./PlatformIconList";
 
-import { colors } from "../styles/theme";
+import { customColors } from "../styles/theme";
 
 interface Props {
   game: Game;
@@ -110,7 +110,7 @@ export const ListCard = ({ game }: Props) => {
                 variant="contained"
                 sx={{
                   marginBottom: 2,
-                  backgroundColor: colors.buttonBg,
+                  backgroundColor: customColors.buttonBg,
                   color: "#fff",
                   justifyContent: "space-between",
                   paddingX: 2,
@@ -133,12 +133,16 @@ export const ListCard = ({ game }: Props) => {
               <Box sx={{ display: "flex", gap: 1, marginRight: "15px" }}>
                 <Typography
                   variant="body2"
-                  color={colors.secondaryText}
+                  color={customColors.secondaryText}
                   fontSize="12px"
                 >
                   Release Date:
                 </Typography>
-                <Typography variant="body2" color={colors.text} fontSize="12px">
+                <Typography
+                  variant="body2"
+                  color={customColors.text}
+                  fontSize="12px"
+                >
                   {formatDate(game.released)}
                 </Typography>
               </Box>
@@ -146,12 +150,16 @@ export const ListCard = ({ game }: Props) => {
               <Box sx={{ display: "flex", gap: 1, marginRight: "15px" }}>
                 <Typography
                   variant="body2"
-                  color={colors.secondaryText}
+                  color={customColors.secondaryText}
                   fontSize="12px"
                 >
                   Playtime:
                 </Typography>
-                <Typography variant="body2" color={colors.text} fontSize="12px">
+                <Typography
+                  variant="body2"
+                  color={customColors.text}
+                  fontSize="12px"
+                >
                   {game.playtime}h
                 </Typography>
               </Box>
@@ -165,14 +173,14 @@ export const ListCard = ({ game }: Props) => {
               >
                 <Typography
                   variant="body2"
-                  color={colors.secondaryText}
+                  color={customColors.secondaryText}
                   fontSize="12px"
                 >
                   Chart:
                 </Typography>
                 <Typography
                   variant="body2"
-                  color={colors.text}
+                  color={customColors.text}
                   fontSize="12px"
                   sx={{ textDecoration: "underline" }}
                 >
@@ -189,12 +197,16 @@ export const ListCard = ({ game }: Props) => {
               >
                 <Typography
                   variant="body2"
-                  color={colors.secondaryText}
+                  color={customColors.secondaryText}
                   fontSize="12px"
                 >
                   Rating:
                 </Typography>
-                <Typography variant="body2" color={colors.text} fontSize="12px">
+                <Typography
+                  variant="body2"
+                  color={customColors.text}
+                  fontSize="12px"
+                >
                   {game.rating_top}
                 </Typography>
               </Box>

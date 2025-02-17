@@ -1,9 +1,11 @@
 import { RouteObject } from "react-router-dom";
-import About from "../playground/About";
-import Review from "../playground/Review";
-import Top10 from "../playground/Top10";
-import Home from "../playground/Home";
+import About from "../pages/About";
+import Review from "../pages/Review";
+import Top10 from "../pages/Top10";
+import Home from "../pages/Home";
 import { MainPage } from "../pages/MainPage";
+import GameDetailsPage from "../pages/GameDetailsPage";
+// import { GameDetailsPage } from "../playground/GameDetailsPage";
 
 const routes: RouteObject[] = [
   {
@@ -19,6 +21,7 @@ const routes: RouteObject[] = [
       },
       { path: "review", element: <Review /> },
       { path: "top-10", element: <Top10 /> },
+      { path: "game-details/:id", element: <GameDetailsPage /> },
     ],
   },
   {
