@@ -86,10 +86,9 @@ export const GridCard = ({ game, variant = "grid" }: Props) => {
           }}
         >
           <Box
+            width="100%"
             sx={{
               display: "flex",
-              gap: 2,
-              justifyContent: "space-between",
             }}
           >
             <PlatformIconList

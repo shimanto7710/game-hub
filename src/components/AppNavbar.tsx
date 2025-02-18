@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent } from "react";
+import { useState, KeyboardEvent, useEffect } from "react";
 import {
   Box,
   Stack,
@@ -14,10 +14,15 @@ import { useNavigate } from "react-router-dom";
 
 export interface Props {
   onSearch: (searchedText: string) => void;
+  initialSearchText?: string;
 }
 
-export const AppNavbar = ({ onSearch }: Props) => {
-  const [searchText, setSearchText] = useState("");
+export const AppNavbar = ({ onSearch, initialSearchText = "" }: Props) => {
+  const [searchText, setSearchText] = useState(initialSearchText);
+
+  useEffect(() => {
+    setSearchText(initialSearchText); // Update state when prop changes
+  }, [initialSearchText]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {

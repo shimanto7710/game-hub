@@ -42,9 +42,11 @@ export const MainPage = () => {
           >
             <AppNavbar
               onSearch={(searchText) => {
+                // alert(searchText);
                 navigate(`/`);
                 setGameQuery({ ...gameQuery, searchText: searchText });
               }}
+              initialSearchText={gameQuery.searchText}
             />
           </Box>
 

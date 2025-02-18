@@ -170,7 +170,7 @@ const GameDetailsPage = () => {
           </Box>
         </Box>
 
-        <Box display="flex">
+        <Box display="flex" width="100%">
           <Button
             variant="contained"
             // onClick={() => navigate(`/game-details/${game.id}`)}
@@ -183,7 +183,7 @@ const GameDetailsPage = () => {
               borderRadius: "4px",
               textTransform: "none",
               "&:hover": { backgroundColor: "#252525" },
-              width: "30%", // Adjust width if needed
+              flex: "1",
               display: "flex",
               height: "40px",
               boxShadow: "none",
@@ -206,7 +206,7 @@ const GameDetailsPage = () => {
               borderRadius: "4px",
               textTransform: "none",
               "&:hover": { backgroundColor: "#252525" },
-              width: "30%", // Adjust width if needed
+              flex: "1",
               display: "flex",
               height: "40px",
               boxShadow: "none",

@@ -5,3 +5,11 @@
     background-color: #151515;
     
   }
+
+  /* index.css or App.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #151515; /* Use your custom background color */
+}
