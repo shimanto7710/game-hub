@@ -16,13 +16,13 @@ import {
 import { useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
 import { formatToFutureDate } from "../app/utils";
-import PlatformIconList from "../components/PlatformIconList";
+import PlatformIconList from "../components/HomePage/PlatformIconList";
 import { customColors } from "../styles/theme";
 import AddIcon from "@mui/icons-material/Add";
 import MapsUgcRoundedIcon from "@mui/icons-material/MapsUgcRounded";
-import DescriptionToggle from "../components/DescriptionToggle";
+import DescriptionToggle from "../components/GameDetailsPage/DescriptionToggle";
 import useGameSS from "../hooks/useGameScreenShot";
-import { GridCard } from "../components/Card";
+import { GameCard } from "../components/HomePage/GameCard";
 import useRelatedGames from "../hooks/useRelatedGames";
 import DrawOutlinedIcon from "@mui/icons-material/DrawOutlined";
 // import useTwitch from "../hooks/useTwitch";
@@ -524,7 +524,7 @@ const GameDetailsPage = () => {
         <Grid container spacing={3} sx={{ marginTop: "0px" }}>
           {relatedGames.map((game) => (
             <Grid item key={game.id} xs={12} sm={6} md={4} lg={4} xl={3}>
-              <GridCard game={game} variant={"grid"} />
+              <GameCard game={game} variant={"grid"} />
             </Grid>
           ))}
         </Grid>

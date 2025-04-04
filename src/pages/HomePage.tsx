@@ -8,15 +8,15 @@ import {
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
 import { customColors } from "../styles/theme";
-import HomeGrid from "../components/HomeGrid";
+import HomeGridView from "../components/HomePage/HomeGridView";
 import { useOutletContext } from "react-router-dom";
 import { GameQuery } from "../model/GameInterface";
-import { PlatformSelector } from "../components/PlatformSelector";
+import { PlatformSelector } from "../components/HomePage/PlatformSelector";
 import { Platform } from "../hooks/useGames";
-import { SortSelector } from "../components/SortSelector";
+import { SortSelector } from "../components/HomePage/SortSelector";
 // import { GameQuery } from "../model/GameInterface";
 
-const Home: React.FC = () => {
+const HomePage: React.FC = () => {
   // const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   // const gameQuery = useOutletContext<GameQuery>();
   const { gameQuery, setGameQuery } = useOutletContext<{
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
           </Box>
         </Box>
 
-        <HomeGrid
+        <HomeGridView
           gameQuery={gameQuery}
           displayOption={displayOption}
           onLoadMore={() => {
@@ -162,4 +162,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default HomePage;

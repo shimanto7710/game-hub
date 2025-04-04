@@ -7,13 +7,13 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { Game } from "../hooks/useGames";
+import { Game } from "../../hooks/useGames";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { formatDate, formatRankAndDate } from "../app/utils";
+import { formatDate, formatRankAndDate } from "../../app/utils";
 import PlatformIconList from "./PlatformIconList";
 
-import { customColors } from "../styles/theme";
+import { customColors } from "../../styles/theme";
 
 interface Props {
   game: Game;

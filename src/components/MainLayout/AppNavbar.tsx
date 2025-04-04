@@ -9,9 +9,10 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close"; // Add close icon
-import { customColors } from "../styles/theme";
+import LinkedInIcon from "@mui/icons-material/LinkedIn"; // Import LinkedIn icon
+import GitHubIcon from "@mui/icons-material/GitHub"; // Import LinkedIn icon
 import { useNavigate } from "react-router-dom";
-
+import { customColors } from "../../styles/theme";
 export interface Props {
   onSearch: (searchedText: string) => void;
   initialSearchText?: string;
@@ -128,6 +129,44 @@ export const AppNavbar = ({ onSearch, initialSearchText = "" }: Props) => {
               ),
             }}
           />
+        </Box>
+
+        <Box
+          sx={{ display: "flex", alignItems: "center", marginRight: 3, gap: 1 }}
+        >
+          {/* LinkedIn Icon */}
+          <IconButton
+            component="a"
+            href="https://www.linkedin.com/in/afser10/"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              color: "white",
+              "&:hover": {
+                color: "#0077b5", // LinkedIn blue
+                backgroundColor: "transparent",
+              },
+            }}
+          >
+            <LinkedInIcon />
+          </IconButton>
+
+          {/* GitHub Icon */}
+          <IconButton
+            component="a"
+            href="https://github.com/shimanto7710/game-hub.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              color: "white",
+              "&:hover": {
+                color: "#999999", // Light gray on hover
+                backgroundColor: "transparent",
+              },
+            }}
+          >
+            <GitHubIcon />
+          </IconButton>
         </Box>
       </Stack>
     </Box>

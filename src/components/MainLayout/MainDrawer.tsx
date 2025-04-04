@@ -2,8 +2,8 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import SideMenu from "./SideMenu";
 import { useNavigate } from "react-router-dom";
-import { customColors } from "../styles/theme"; // Import colors from theme
-import { GameQuery } from "../model/GameInterface";
+import { customColors } from "../../styles/theme"; // Import colors from theme
+import { GameQuery } from "../../model/GameInterface";
 import HoverBadge from "./HoverBadge";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
@@ -14,24 +14,24 @@ import {
   getLast7Days,
   getNext7Days,
   getYearStartToToday,
-} from "../app/utils";
-import { Genre } from "../hooks/useGenres";
+} from "../../app/utils";
+import { Genre } from "../../hooks/useGenres";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 // Update the interface to allow resetting the genre by accepting null.
-export interface HomeDrawerProps {
+export interface MainDrawerProps {
   gameQuery: GameQuery;
   onSelectedGenre: (genre: Genre | null) => void;
   onChangeGameQuery: (dates: string, sortedBy?: string) => void;
   onClickHome: () => void;
 }
 
-export const HomeDrawer = ({
+export const MainDrawer = ({
   gameQuery,
   onSelectedGenre,
   onChangeGameQuery,
   onClickHome,
-}: HomeDrawerProps) => {
+}: MainDrawerProps) => {
   const menuItems = [
     { text: "Home", path: "/" },
     { text: "Reviews", path: "/review" },

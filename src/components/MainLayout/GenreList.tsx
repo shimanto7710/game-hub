@@ -1,6 +1,6 @@
 import { List, ListItem, Spinner, Text, HStack, Image } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
-import getCroppedImageUrl from "../serviecs/image-url";
+import useGenres, { Genre } from "../../hooks/useGenres";
+import getCroppedImageUrl from "../../serviecs/image-url";
 import { Typography } from "@mui/material";
 
 interface Props {

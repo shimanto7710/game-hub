@@ -1,16 +1,16 @@
 // import { useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import { GridCardProps } from "../model/GameInterface";
-import useGames, { Game } from "../hooks/useGames";
-import { GridCard } from "./Card";
+import { GridCardProps } from "../../model/GameInterface";
+import useGames, { Game } from "../../hooks/useGames";
+import { GameCard } from "./GameCard";
 // import { GameCardContainer } from "./GameCardContainer";
 import { GridCardSkeleton } from "./GameCardSkeleton";
 import { useEffect, useState } from "react";
 import useInfiniteScroll from "./UseInfiniteScroll";
-import ScrollSpinner from "./ScrollSpinner";
+import ScrollSpinner from "../ScrollSpinner";
 // import { GameCardSkeleton } from "./GameCardSkeleton";
 
-export default function HomeGrid({
+export default function HomeGridView({
   gameQuery,
   onLoadMore,
   displayOption,
@@ -81,7 +81,7 @@ export default function HomeGrid({
                 : {}
             }
           >
-            <GridCard
+            <GameCard
               game={game}
               variant={displayOption === "list" ? "list" : "grid"}
             />

@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { GenreList } from "./GenreList";
-import { GameQueryProps } from "../model/GameInterface";
+import { GameQueryProps } from "../../model/GameInterface";
 // import { GameQuery } from "../pages/MainPage";
 
 export default function SideMenu({

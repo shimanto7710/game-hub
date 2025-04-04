@@ -7,16 +7,16 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import { Game } from "../hooks/useGames";
+import { Game } from "../../hooks/useGames";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
-import { customColors } from "../styles/theme";
+import { customColors } from "../../styles/theme";
 import PlatformIconList from "./PlatformIconList";
 import { CriticScore } from "./CriticScore";
-import { formatDate, formatRankAndDate } from "../app/utils";
+import { formatDate, formatRankAndDate } from "../../app/utils";
 // import { GamePromoCard } from "./ListCard";
 import { ListCard } from "./ListCard";
-import { Emoji } from "./Emoji";
+import { Emoji } from "../Emoji";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
@@ -24,7 +24,7 @@ interface Props {
   game: Game;
   variant?: "grid" | "list";
 }
-export const GridCard = ({ game, variant = "grid" }: Props) => {
+export const GameCard = ({ game, variant = "grid" }: Props) => {
   const [hovered, setHovered] = useState<number | null>(null);
   const navigate = useNavigate();
 

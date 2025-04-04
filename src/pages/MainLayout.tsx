@@ -1,13 +1,13 @@
 import { Box, Stack } from "@mui/material";
-import { AppNavbar } from "../components/AppNavbar";
 import { Outlet, useNavigate } from "react-router-dom";
-import { HomeDrawer } from "../components/Drawer";
+import { MainDrawer } from "../components/MainLayout/MainDrawer";
 import { customColors } from "../styles/theme";
 import { useState } from "react";
 import { GameQuery } from "../model/GameInterface";
+import { AppNavbar } from "../components/MainLayout/AppNavbar";
 // import { getLast30DateRange } from "../app/utils";
 
-export const MainPage = () => {
+export const MainLayout = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const navigate = useNavigate();
   // const [gameDetails,setGameDetails]=useState<GameDetails>({} as GameDetails);
@@ -54,7 +54,7 @@ export const MainPage = () => {
           <Stack spacing={1} direction="row" sx={{ flex: 1 }}>
             {/* Side Menu */}
             <Box sx={{ width: "100%", borderRadius: 1, flex: 2 }}>
-              <HomeDrawer
+              <MainDrawer
                 onClickHome={() => {
                   navigate(`/`);
                   setGameQuery({
